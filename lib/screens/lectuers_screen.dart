@@ -42,6 +42,10 @@ class _LecturesScreenState extends State<LecturesScreen> {
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
 
+////////////////////////////////////////////////////////
+         showLoadingDialog(context);
+         ///////////////////////////////////////////////
+          
     if (result != null) {
       String? filePath = result.files.single.path;
       String fileName = result.files.single.name;
@@ -69,6 +73,17 @@ class _LecturesScreenState extends State<LecturesScreen> {
             'file_url': downloadURL,
             'created_at': Timestamp.now(),
           });
+     
+///////////////////////////////////
+                                   {
+                                        Navigator.pop(
+                                            context); 
+                                      }
+
+////////////////////////////////
+
+
+           
 
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -84,7 +99,29 @@ class _LecturesScreenState extends State<LecturesScreen> {
         }
       }
     }
+    
+
   }
+   void showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Dialog(
+          backgroundColor: Colors.transparent,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 10),
+              Text(" ....جاري التحميل", style: TextStyle(color: Colors.white)),
+            ],
+          ),
+        );
+      },
+    );
+  } 
+
 
   @override
   Widget build(BuildContext context) {
@@ -119,8 +156,10 @@ class _LecturesScreenState extends State<LecturesScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _pickAndUploadFile,
+
         label: Text(_selectedIndex == 0 ? 'إضافة محاضرة' : 'إضافة تاسك'),
         icon: const Icon(Icons.add),
+        
       ),
     );
   }

@@ -83,8 +83,8 @@ class AssignmentPage extends StatelessWidget {
                                 children: [
                                   Text(
                                       "تمت الإضافة في: ${formatTimestamp(doc['created_at'])}"),
-                                 // if (fileSizeSnapshot.hasData)
-                                   // Text("حجم الملف: ${fileSizeSnapshot.data}"),
+                                  if (fileSizeSnapshot.hasData)
+                                    Text("حجم الملف: ${fileSizeSnapshot.data}"),
                                 ],
                               ),
                               trailing: Row(
@@ -249,7 +249,7 @@ class AssignmentPage extends StatelessWidget {
             children: [
               CircularProgressIndicator(),
               SizedBox(height: 10),
-              Text("جاري التحميل...", style: TextStyle(color: Colors.white)),
+              Text("...جاري التحميل", style: TextStyle(color: Colors.white)),
             ],
           ),
         );

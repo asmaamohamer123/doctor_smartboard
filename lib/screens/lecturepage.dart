@@ -248,7 +248,7 @@ class LecturePage extends StatelessWidget {
       Navigator.pop(context);
       print("Error deleting lecture: $e");
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('خطأ أثناء حذف المحاضرة: $e')),
+        SnackBar(content: Text(':خطأ أثناء حذف المحاضرة $e')),
       );
     }
   }
@@ -293,7 +293,7 @@ class LecturePage extends StatelessWidget {
             children: [
               CircularProgressIndicator(),
               SizedBox(height: 10),
-              Text("جاري التحميل...", style: TextStyle(color: Colors.white)),
+              Text("...جاري التحميل", style: TextStyle(color: Colors.white)),
             ],
           ),
         );
